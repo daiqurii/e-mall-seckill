@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 public class MQSender {
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    public void send(Object msg) {
-        log.info("发送消息："+msg);
-        rabbitTemplate.convertAndSend("fanoutExchange","",msg);
+    public void sendsecKillMessage(String message) {
+        log.info("发送消息：" + message);
+        rabbitTemplate.convertAndSend("seckillExchange", "seckill.msg", message);
     }
 }
